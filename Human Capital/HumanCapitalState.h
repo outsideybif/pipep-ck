@@ -8,9 +8,13 @@ public:
 
 	short GetMaxValueIndex();
 	double GetMaxValue();
-	bool CheckForMatch(HumanCapitalStrategy* strategy);
+	bool CheckForMatch(double lookingHumanCapital);
 
 	void SetNewValue(short index, double value);
+
+	void PrintStatistics();
+
+	double MatchResult(double lookingHumanCapital);
 
 protected:
 	HumanCapitalStrategy* strategy;
@@ -18,5 +22,8 @@ protected:
 
 	std::map<short, double>* values = new std::map<short, double>();
 
+
+	double currentMax;
+	double arg_max;
 };
 

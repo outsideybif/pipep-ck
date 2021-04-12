@@ -1,63 +1,70 @@
 #include "includes.h"
 
-HumanCapitalAction::HumanCapitalAction(short budget, short creativity, short competence,
-	short purposefulness, short communicativeness, short motivation)
+HumanCapitalAction::HumanCapitalAction(short budget, short salary, short education,
+	short health, short cultural, short information)
 {
 	this->budget = budget;
-	this->communicativeness = communicativeness;
-	this->creativity = creativity;
-	this->competence = competence;
-	this->motivation = motivation;
-	this->purposefulness = purposefulness;
+	this->salary = salary;
+	this->education = education;
+	this->health = health;
+	this->cultural = cultural;
+	this->information = information;
 
 }
 
-void HumanCapitalAction::SetCreativity(short creativity)
+
+
+void HumanCapitalAction::SetSalary(short salary)
 {
-	this->creativity = creativity;
+	this->salary = salary;
 }
 
-void HumanCapitalAction::SetCompetence(short competence)
+void HumanCapitalAction::SetEducation(short education)
 {
-	this->competence = competence;
+	this->education = education;
 }
 
-void HumanCapitalAction::SetPurposefulness(short purposefulness)
+void HumanCapitalAction::SetHealth(short health)
 {
-	this->purposefulness = purposefulness;
+	this->health = health;
 }
 
-void HumanCapitalAction::SetCommunicativeness(short communicativeness)
+void HumanCapitalAction::SetCultural(short cultural)
 {
-	this->communicativeness = communicativeness;
+	this->cultural = cultural;
 }
 
-void HumanCapitalAction::SetMotivation(short motivation)
+void HumanCapitalAction::SetInformation(short information)
 {
-	this->motivation = motivation;
+	this->information = information;
 }
 
-short HumanCapitalAction::GetCreativity()
+short HumanCapitalAction::GetSalary()
 {
-	return this->creativity;
+	return this->salary;
 }
 
-short HumanCapitalAction::GetCompetence()
+short HumanCapitalAction::GetEducation()
 {
-	return this->competence;
+	return this->education;
 }
 
-short HumanCapitalAction::GetPurposefulness()
+short HumanCapitalAction::GetHealth()
 {
-	return this->purposefulness;
+	return this->health;
 }
 
-short HumanCapitalAction::GetCommunicativeness()
+short HumanCapitalAction::GetCultural()
 {
-	return this->communicativeness;
+	return this->cultural;
 }
 
-short HumanCapitalAction::GetMotivation()
+short HumanCapitalAction::GetInformation()
 {
-	return this->motivation;
+	return this->information;
+}
+
+double HumanCapitalAction::GetBudget()
+{
+	return this->budget;
 }

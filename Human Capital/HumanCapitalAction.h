@@ -2,31 +2,33 @@
 class HumanCapitalAction
 {
 public:
-	HumanCapitalAction(short budget = 1000, short creativity = 0, short competence = 0,
-		short purposefulness = 0, short communicativeness = 0,
-		short motivation = 0);
+	HumanCapitalAction(short budget = 1000, short salary = 0, short education = 0,
+		short health = 0, short cultural = 0,
+		short information = 0);
 
 
-	void SetCreativity(short creativity);
-	void SetCompetence(short competence);
-	void SetPurposefulness(short purposefulness);
-	void SetCommunicativeness(short communicativeness);
-	void SetMotivation(short motivation);
+	void SetSalary(short salary);
+	void SetEducation(short education);
+	void SetHealth(short health);
+	void SetCultural(short cultural);
+	void SetInformation(short information);
 
-	short GetCreativity();
-	short GetCompetence();
-	short GetPurposefulness();
-	short GetCommunicativeness();
-	short GetMotivation();
+	short GetSalary();
+	short GetEducation();
+	short GetHealth();
+	short GetCultural();
+	short GetInformation();
+
+	double GetBudget();
 
 
 protected:
 	short	budget = 1000,
-			creativity = 0,
-			competence = 0,
-			purposefulness = 0,
-			communicativeness = 0,
-			motivation = 0;
+		salary = 0,
+		education = 0,
+		health = 0,
+		cultural = 0,
+		information = 0;
 
 
 

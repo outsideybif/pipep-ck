@@ -5,45 +5,75 @@ class HumanCapitalStrategy
 {
 
 public:
-	HumanCapitalStrategy(short budget = 1000, short creativity = 0, short competence = 0,
-		short purposefulness = 0, short communicativeness = 0,
-		short motivation = 0);
+	HumanCapitalStrategy(double budget = 1000, double creativity = 0, double competence = 0,
+		double purposefulness = 0, double communicativeness = 0,
+		double motivation = 0);
 
 
-	void SetCreativity(short creativity);
-	void SetCompetence(short competence);
-	void SetPurposefulness(short purposefulness);
-	void SetCommunicativeness(short communicativeness);
-	void SetMotivation(short motivation);
+	void SetCreativity(double creativity);
+	void SetCompetence(double competence);
+	void SetPurposefulness(double purposefulness);
+	void SetCommunicativeness(double communicativeness);
+	void SetMotivation(double motivation);
 
-	void AddCreativity(short creativity);
-	void AddCompetence(short competence);
-	void AddPurposefulness(short purposefulness);
-	void AddCommunicativeness(short communicativeness);
-	void AddMotivation(short motivation);
+	void AddSalary(double salary);
+	void AddEducation(double education);
+	void AddHealth(double health);
+	void AddCultural(double cultural);
+	void AddInformation(double information);
 
-	short GetCreativity();
-	short GetCompetence();
-	short GetPurposefulness();
-	short GetCommunicativeness();
-	short GetMotivation();
+
+	double GetSalaryInvesting();
+	double GetEducationInvesting();
+	double GetHealthInvesting();
+	double GetCulturalInvesting();
+	double GetInformationInvesting();
+
+
+	double GetBudget();
+	double GetTotalHumanCapitalInvesting();
+	double GetHumanCapital();
+
+	double GetCreativity();
+	double GetCompetence();
+	double GetPurposefulness();
+	double GetCommunicativeness();
+	double GetMotivation();
+
+	double CalculateHumanCapital();
 
 	void ApplyAction(HumanCapitalAction* action);
 
-	void PrintData();
+	void PrintData(bool is_new_best_value, int best_counts, int  best_human_capital, int global_loop, int current_steps);
 
 	void Reset();
 
 
 protected:
-	short	budget = 1000,
+	double human_capital = 0;
+	double human_capital_investing = 0;
+
+
+	double	salary_investing = 0,
+		education_capital_investing = 0,
+		health_capital_investing = 0,
+		cultural_capital_investing = 0,
+		information_capital_investing = 0;
+
+	double	salary = 0,
+		education_capital = 0,
+		health_capital = 0,
+		cultural_capital = 0,
+		information_capital = 0;
+
+	double	budget = 1000,
 		creativity = 0,
 		competence = 0,
 		purposefulness = 0,
 		communicativeness = 0,
 		motivation = 0;
 
-	short	start_budget = 1000,
+	double	start_budget = 1000,
 		start_creativity = 0,
 		start_competence = 0,
 		start_purposefulness = 0,
@@ -53,6 +83,13 @@ protected:
 
 
 private:
+	void UpdateTotalHumanCapitalInvesting();
+
+	void UpdateSalaryInvesting();
+	void UpdateEducationInvesting();
+	void UpdateHealthInvesting();
+	void UpdateCulturalInvesting();
+	void UpdateInfromationInvesting();
 
 };
 

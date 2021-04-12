@@ -13,44 +13,39 @@ HumanCapitalState::HumanCapitalState(HumanCapitalStrategy* strategy, std::vector
 
 short HumanCapitalState::GetMaxValueIndex()
 {
-	auto max_value = *std::max_element(this->values->begin(), this->values->end());
-	return max_value.first;
+	currentMax = this->values->cbegin()->second;
+	arg_max = this->values->cbegin()->first;
+	for (auto it = this->values->cbegin(); it != this->values->cend(); ++it)
+	{
+		if (it->second > currentMax) {
+			arg_max = it->first;
+			currentMax = it->second;
+		}
+	}
+	return arg_max;
 }
 
 double HumanCapitalState::GetMaxValue()
 {
-	auto max_value = *std::max_element(this->values->begin(), this->values->end());
-	return max_value.second;
+	currentMax = this->values->cbegin()->second;
+	arg_max = this->values->cbegin()->first;
+
+
+
+	for (auto it = this->values->cbegin(); it != this->values->cend(); ++it)
+	{
+		if (it->second > currentMax) {
+			arg_max = it->first;
+			currentMax = it->second;
+		}
+	}
+	return currentMax;
 }
 
-bool HumanCapitalState::CheckForMatch(HumanCapitalStrategy* strategy)
+bool HumanCapitalState::CheckForMatch(double lookingHumanCapital)
 {
-	short min_of_creativity = strategy->GetCreativity() - (strategy->GetCreativity() % 10);
-	short max_of_creativity = min_of_creativity + 10;
-
-	short min_of_competence = strategy->GetCompetence() - (strategy->GetCompetence() % 10);
-	short max_of_competence = min_of_competence + 10;
-
-	short min_of_communicativeness = strategy->GetCommunicativeness() - (strategy->GetCommunicativeness() % 10);
-	short max_of_communicativeness = min_of_communicativeness + 10;
-
-	short min_of_motivation = strategy->GetMotivation() - (strategy->GetMotivation() % 10);
-	short max_of_motivation = min_of_motivation + 10;
-
-	short min_of_purposefulness = strategy->GetPurposefulness() - (strategy->GetPurposefulness() % 10);
-	short max_of_purposefulness = min_of_purposefulness + 10;
-
-	short current_creativity = this->strategy->GetCreativity();
-	short current_competence = this->strategy->GetCompetence();
-	short current_communicativeness = this->strategy->GetCommunicativeness();
-	short current_motivation = this->strategy->GetMotivation();
-	short current_purposefulness = this->strategy->GetPurposefulness();
-
-	if (current_creativity > min_of_creativity && current_creativity < max_of_creativity &&
-		current_competence > min_of_competence && current_competence < max_of_competence &&
-		current_communicativeness > min_of_communicativeness && current_communicativeness < max_of_communicativeness &&
-		current_motivation > min_of_motivation && current_motivation < max_of_motivation &&
-		current_purposefulness > min_of_purposefulness && current_purposefulness < max_of_purposefulness) {
+	
+	if (this->strategy->CalculateHumanCapital() >= lookingHumanCapital) {
 		return true;
 	}
 	else {
@@ -58,9 +53,31 @@ bool HumanCapitalState::CheckForMatch(HumanCapitalStrategy* strategy)
 	}
 }
 
+double HumanCapitalState::MatchResult(double lookingHumanCapital)
+{
+	return lookingHumanCapital - this->strategy->CalculateHumanCapital();
+}
+
+
+
 void HumanCapitalState::SetNewValue(short index, double value)
 {
 	std::map<short, double>::iterator it = this->values->find(index);
 	if (it != this->values->end())
 		it->second = value;
+}
+
+void HumanCapitalState::PrintStatistics()
+{
+	std::cout << "-------\n";
+
+	for (std::map<short, double>::iterator it = this->values->begin(); it != this->values->end(); ++it)
+	{
+		std::cout << it->first << ":" << it->second << "\n";
+		
+	}
+	
+
+	std::cout << "-------\n";
+		
 }
